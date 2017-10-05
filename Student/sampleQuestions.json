@@ -1,0 +1,22 @@
+[
+ {
+   "questionID": 1,
+   "questionText": "The parameter weekday is True if it is a weekday, and the parameter vacation is True if we are on vacation. We sleep in if it is not a weekday or we're on vacation. Return True if we sleep in."
+ },
+ {
+   "questionID": 2,
+   "questionText": "\nGiven an int n, return the absolute difference between n and 21, except return double the absolute difference if n is over 21.\n\n"
+ },
+ {
+   "questionID": 3,
+   "questionText": "\nGiven a string and a non-negative int n, return a larger string that is n copies of the original string."
+ },
+ {
+   "questionID": 4,
+   "questionText": "\nWhen squirrels get together for a party, they like to have cigars. A squirrel party is successful when the number of cigars is between 40 and 60, inclusive. Unless it is the weekend, in which case there is no upper bound on the number of cigars. Return True if the party with the given values is successful, or False otherwise."
+ },
+ {
+   "questionID": 5,
+   "questionText": "\nGiven a day of the week encoded as 0=Sun, 1=Mon, 2=Tue, ...6=Sat, and a boolean indicating if we are on vacation, return a string of the form \"7:00\" indicating when the alarm clock should ring. Weekdays, the alarm should be \"7:00\" and on the weekend it should be \"10:00\". Unless we are on vacation -- then on weekdays it should be \"10:00\" and weekends it should be \"off\""
+ }
+]
