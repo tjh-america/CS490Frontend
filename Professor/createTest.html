@@ -1,12 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 	<head>
 		<title>Create a Test</title>
-
-
-
+		<link rel="stylesheet" type="text/css" href="../css/style.css">
 	</head>
 	<body onload="makeRequest('json.php');">
-		<h1>Create Test Page</h1>
+		<ul>
+	  <li><a href="index.html">Home</a></li>
+	  <li><a href="createQuestion.html">Create Question</a></li>
+	  <li><a class="active" href="createTest.html">Create Test</a></li>
+	</ul>
+		<h1>Create Test</h1>
 		<div>
 		<button id="submit" onclick="makeRequestData('createTest.php')">Create Test</button>
 	</div>

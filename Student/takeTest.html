@@ -1,8 +1,15 @@
 <HTML>
   <head>
   <title>Student Take Test</title>
+  <link rel="stylesheet" type="text/css" href="../css/style.css">
   </head>
 <body onload="makeRequest('json.php');">
+  <ul>
+  <li><a href="index.html">Home</a></li>
+  <li><a class="active" href="takeTest.html">Take Test</a></li>
+  <li><a href="viewGrades.html">View Grades</a></li>
+</ul>
+<br><hr><br>
   <div id="test"></div>
   <button onclick="makeRequestData('submitTest.php')">Submit Test</button>
   <script>
