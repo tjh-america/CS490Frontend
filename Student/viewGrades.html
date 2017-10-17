@@ -2,12 +2,15 @@
 	<head>
 		<title>Create a Test</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
+		<script type="text/javascript" src="../js/viewScores.js"></script>
 	</head>
-  <body>
+  <body onload="makeRequest('viewGrades.php')">
     <ul>
     <li><a href="index.html">Home</a></li>
     <li><a href="takeTest.html">Take Test</a></li>
     <li><a class="active" href="viewGrades.html">View Grades</a></li>
   </ul>
+	<br><hr><br>
+	<div id="test"></div>
   </body>
   <html>

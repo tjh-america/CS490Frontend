@@ -16,7 +16,7 @@ A Student can:
 1. Take a test
 2. View his or her grade
 
-In the Current 0.2 Beta Version:
+In the Current 0.3 Beta Version:
 
 Professor/createQuestion.html accepts input and returns JSON
 
@@ -28,9 +28,6 @@ To Do:
 
 Connect to Middle End/database
 
-Allow Professor to release scores
-
-Allow student to view grades
 
 Ability for Professor to search test bank by type of question or keywords
 
