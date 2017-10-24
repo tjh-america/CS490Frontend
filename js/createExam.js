@@ -22,7 +22,7 @@ if (httpRequest.readyState === XMLHttpRequest.DONE) {
      var chk="<tr><td><input type='checkbox' onclick='checkTestBank()' name='questionCheck' id='"+x+"' /></td>";
      var td1="<td>"+response[x].questionID+"</td>";
      var td2="<td>"+response[x].questionText+"</td></tr>"
-     txt +=chk+td1+td2
+     txt +=chk+td1+td2;
      //checkbox.name = "selectedQuestions";
      //checkbox.value = "unchecked";
      //checkbox.id = x;
@@ -41,6 +41,8 @@ var response = JSON.parse(httpRequest.responseText);
 var checkBoxes=document.getElementsByName('questionCheck');
 var txt ="<table border='1'><tr><th>Selected Questions:</th></tr><tr>";
 var questionID=[];
+var points=[];
+var num=20;
 
 var testData=[];
 //var questionIDs=[];
@@ -49,8 +51,13 @@ var testData=[];
 for (var i=0; i<checkBoxes.length; i++){
   if (checkBoxes[i].checked){
     var td1="<td>"+response[i].questionText+"</td></tr>";
-    testData.push({questionID:
-      response[i].questionID});
+    testData.push({
+        questionID: response[i].questionID,
+        points: num
+
+    });
+    //testData.push({questionID: response[i].questionID,
+      //points: num});
 
 
     txt+=td1;

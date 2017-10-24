@@ -1,5 +1,5 @@
 #CS490 Frontend
-Version 0.2
+Version 0.3
 The Frontend for a CS490 Project at NJIT.
 
 The project, in it's final form, will be an automated testing system for an introductory Python class. The site will be have 2 different types of users, Professor and Student. Unlike most classes, the professor does not grade the test. Rather, the tests are graded automatically by the system.

@@ -14,12 +14,12 @@ function createTestBank() {
 if (httpRequest.readyState === XMLHttpRequest.DONE) {
   if (httpRequest.status === 200) {
     var response = JSON.parse(httpRequest.responseText);
-   var txt = "<table border='1'><tr><th>Question Number</th><th>Question</th></tr>"
+   var txt = "<table border='1'><tr><th>Question Number</th><th>Question</th><th>Points</th></tr>"
    for (x in response) {
      //var textarea = document.createElement('input');     Run
      //textarea.type = "textarea";
      var td1="<tr><td>"+response[x].questionID+"</td>";
-     var td2="<td>"+response[x].questionText+"</td></tr>"
+     var td2="<td>"+response[x].questionText+"</td><td>20</td></tr>"
      var answer="<tr><td colspan='2'><textarea rows='10' cols='80' name='questionResponse' id='"+x+"'></textarea></td></tr>";
      txt +=td1+td2+answer;
      //checkbox.name = "selectedQuestions";

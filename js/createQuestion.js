@@ -1,6 +1,6 @@
 function makeRequestData(url) {
   var data = getQuestion();
-  console.log(data);
+  //console.log(data);
   httpRequestTest = new XMLHttpRequest();
 
   if (!httpRequestTest) {
@@ -14,7 +14,10 @@ function makeRequestData(url) {
 }
 function getQuestion(){
   var data=document.getElementById("question").value;
-  var jsonData=JSON.stringify(data);
+  var questionData=[];
+  questionData.push({question:
+    data});
+  var jsonData=JSON.stringify(questionData);
   console.log(jsonData);
   return jsonData;
 }
