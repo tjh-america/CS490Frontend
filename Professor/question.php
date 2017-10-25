@@ -1,3 +1,6 @@
+<?php
+include('session.php');
+?>
 <HTML>
   <head>
     <title>Create Question Page</title>
@@ -6,9 +9,10 @@
   </head>
   <body>
     <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a class="active" href="createQuestion.html">Create Question</a></li>
-    <li><a href="createTest.html">Create Test</a></li>
+    <li><a href="index.php">Home</a></li>
+    <li><a class="active" href="question.php">Create Question</a></li>
+    <li><a href="test.php">Create Test</a></li>
+    <li><a href="logout.php">Logout</a></li>
   </ul>
   <br><h1>Create Question</h1>
     <textarea id="question" rows="10" cols="80">Please type your question here, professor.</textarea><br><br>

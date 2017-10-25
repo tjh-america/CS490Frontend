@@ -1,3 +1,6 @@
+<?php
+include('session.php');
+?>
 <html>
 <head>
   <title>Professor Homepage</title>
@@ -6,9 +9,10 @@
 </head>
 <body>
   <ul>
-  <li><a class="active" href="index.html">Home</a></li>
-  <li><a href="createQuestion.html">Create Question</a></li>
-  <li><a href="createTest.html">Create Test</a></li>
+  <li><a class="active" href="index.php">Home</a></li>
+  <li><a href="question.php">Create Question</a></li>
+  <li><a href="test.php">Create Test</a></li>
+  <li><a href="logout.php">Logout</a></li>
 </ul>
 <h1>Welcome Professor!</h1>
 <br><hr><br>
