@@ -5,7 +5,7 @@ include('session.php');
 	<head>
 		<title>Create a Test</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
-		<script type="text/javascript" src="../js/createExam.js"></script>
+		<script type="text/javascript" src="../js/createExamProfessor.js"></script>
 	</head>
 	<body onload="makeRequest('getQuestions.php');">
 		<ul>
