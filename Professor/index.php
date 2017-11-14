@@ -12,13 +12,14 @@ include('session.php');
   <li><a class="active" href="index.php">Home</a></li>
   <li><a href="question.php">Create Question</a></li>
   <li><a href="test.php">Create Test</a></li>
+  <li><a href="grade.php">Grade Tests</a></li>
   <li><a href="logout.php">Logout</a></li>
 </ul>
 <h1>Welcome Professor!</h1>
 <br><hr><br>
-When you are ready, you can release scores, or create questions and tests by clicking the links above.
+From this site, you can create a question, create a test, and submit tets to be automatically graded. If you don't like the scores the autograder has assigned, you will still be able to change the grades and add comments.
 <br><br>
-<button id="releaseScores" onclick="makeRequestData('releaseScores.php')">Release Scores</button>
+<button id="releaseScores" onclick="releaseScores('releaseScores.php')">Release Scores</button>
 <div id="released"></div>
 </body>
 </html>

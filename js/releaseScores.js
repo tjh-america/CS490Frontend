@@ -1,17 +1,16 @@
-function makeRequestData(url) {
-httpRequestTest = new XMLHttpRequest();
-var release = 1;
-console.log("line 49");
-if (!httpRequestTest) {
-  alert('Giving up :( Cannot create an XMLHTTP instance');
-  return false;
+function releaseScores(url) {
+  httpRequest = new XMLHttpRequest();
+
+  if (!httpRequest) {
+    alert('Giving up :( Cannot create an XMLHTTP instance');
+    return false;
+  }
+  //httpRequest.onreadystatechange = createTestBank;
+    httpRequest.open('POST', url);
+    httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    httpRequest.send();
 }
-httpRequestTest.onreadystatechange = releaseScores;
-  httpRequestTest.open('POST', url);
-  httpRequestTest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  httpRequestTest.send(release);
-}
-function releaseScores() {
-  console.log(httpRequestTest.responseText);
-  document.getElementById('released').innerHTML=httpRequestTest.responseText;
-}
+//function releaseScores() {
+  //console.log(httpRequestTest.responseText);
+  //document.getElementById('released').innerHTML=httpRequestTest.responseText;
+//}

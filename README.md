@@ -1,15 +1,18 @@
 #CS490 Frontend
-Version 0.3
+Version 0.9
 The Frontend for a CS490 Project at NJIT.
 
-The project, in it's final form, will be an automated testing system for an introductory Python class. The site will be have 2 different types of users, Professor and Student. Unlike most classes, the professor does not grade the test. Rather, the tests are graded automatically by the system.
-
+This Project is a Website that allows a professor to create a test that is based
+on Python, similar to NJIT CS100. However, the test is automatically graded by
+our Patented CS1000 Algorithm, to save the professor time and hassle. However,
+he can still add comments if he chooses.
 A Professor can:
 
 1. Add questions to a question bank
-2. Create a test from questions in the question bank
-3. Release scores so the test can be graded
-4. Add comments and alter scores
+2. Search for questions by name, or question type.
+3. Create a test from questions in the question bank
+4. Release scores so the test can be graded
+5. Add comments and alter scores
 
 A Student can:
 
@@ -20,16 +23,13 @@ In the Current 0.3 Beta Version:
 
 Professor/createQuestion.html accepts input and returns JSON
 
-Professor/createTest.html allows professor to move questions from the question bank to the tentative test. When submitted, the test returns JSON
+Professor/createTest.html allows professor to move questions from the question
+bank to the tentative test. When submitted, the test returns JSON
 
-Student/takeTest.html allows student to answer questions from the test. Submitting the test returns JSON
+Student/takeTest.html allows student to answer questions from the test.
+Submitting the test returns JSON
 
 To Do:
-
-Connect to Middle End/database
-
-
-Ability for Professor to search test bank by type of question or keywords
 
 Look and feel
 

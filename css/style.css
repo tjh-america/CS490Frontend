@@ -25,4 +25,10 @@ li a:hover:not(.active) {
 .active {
     background-color: #4CAF50;
 }
+.checkboxes{
+  float: left;
+}
+.parameters{
+  float: right;
+}
 </style>

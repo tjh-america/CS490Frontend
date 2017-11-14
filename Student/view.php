@@ -3,7 +3,7 @@ include('session.php');
 ?>
 <html>
 	<head>
-		<title>Create a Test</title>
+		<title>View Grades</title>
 		<link rel="stylesheet" type="text/css" href="../css/style.css">
 		<script type="text/javascript" src="../js/viewScores.js"></script>
 	</head>

@@ -19,15 +19,19 @@ if (httpRequest.readyState === XMLHttpRequest.DONE) {
    var pointsAchieved=0;
    for (x in response) {
      var questionID=response[x].examQuestionID;
-     var studentAnswer=response[x].questionresponse;
+     var studentAnswer=response[x].questionResponse;
+     studentAnswer=studentAnswer.replace(/(\n)+/g, '<br />');
+      //studentAnswer=studentAnswer.replace(/("\n ")+/g,'    <br>');
      var studentScore=response[x].pointsAwarded;
      var questionPoints=response[x].points;
      var questionText=response[x].questionText;
+     var comments=response[x].comments;
      var td1="<tr><td>"+questionID+"</td>";
      var td2="<td>"+questionText+"</td></tr>"
      var studentResponse="<tr><td colspan='3'>Your Response:<br>"+studentAnswer+"</td></tr>";
+     var professorComments="<tr><td colspan='2'>Professor Comments:<br>"+comments+"</td></tr>";
      var scoreRow="<tr><td colspan='2'>Your Score on Question "+questionID+": "+studentScore+" out of "+questionPoints+"</td></tr>"
-     txt +=td1+td2+studentResponse+scoreRow;
+     txt +=td1+td2+studentResponse+professorComments+scoreRow;
      pointsAchieved+=parseInt(studentScore);
      pointsPossible+=parseInt(questionPoints);
      //checkbox.name = "selectedQuestions";
