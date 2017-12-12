@@ -16,8 +16,9 @@ function createTestBank() {
 if (httpRequest.readyState === XMLHttpRequest.DONE) {
   if (httpRequest.status === 200) {
     var response = JSON.parse(httpRequest.responseText);
-   var txt = "<table id='questions' border='1'><tr><th>Select Question</th><th>Question ID</th><th>Question</th><th>If Statement?</th><th>While Loop?</th><th>For Loop?</th><th>Points</th></tr>";
+   var txt = "<table id='questions' border='1'><tr><th>Select Question</th><th>Question ID</th><th>Question</th><th>If Statement?</th><th>While Loop?</th><th>For Loop?</th><th>Points</th><th>Points</th></tr>";
    for (x in response) {
+     var difficulty=response[x].difficulty;
      var forLoop=response[x].forLoop;
      var whileLoop=response[x].whileLoop;
      var ifStatement=response[x].ifStatement;
@@ -37,13 +38,14 @@ if (httpRequest.readyState === XMLHttpRequest.DONE) {
      checkbox.type = "checkbox";
      var chk="<tr><td><input type='checkbox' onclick='checkTestBank()' name='questionCheck' id='"+x+"' /></td>";
      var td1="<td>"+response[x].questionID+"</td>";
-     var td2="<td>"+response[x].questionText+"</td>"
+     var td2="<td>"+response[x].questionText+"</td>";
+     var td7="<td>"+difficulty+"</td></tr>";
      id=response[x].questionID;
-     var td6="<td id='points"+x+"'><input type='number' size='2' min='0' max='100' value='0' id='"+id+"'></td></tr>"
+     var td6="<td id='points"+x+"'><input type='number' size='2' min='0' max='100' value='0' id='"+id+"'></td>"
      var td3="<td>"+ifStatement+"</td>";
      var td4="<td>"+whileLoop+"</td>";
      var td5="<td>"+forLoop+"</td>";
-     txt +=chk+td1+td2+td3+td4+td5+td6;
+     txt +=chk+td1+td2+td3+td4+td5+td6+td7;
      //checkbox.name = "selectedQuestions";
      //checkbox.value = "unchecked";
      //checkbox.id = x;
@@ -75,7 +77,11 @@ function searchQuestions() {
   }
 }
 function searchByType(x){
-  if (document.getElementById(x).checked==true){
+  if (x==2){
+
+    input ="";
+  }
+  else if (document.getElementById(x).checked==true){
     var input="Yes";
   }
   else {
@@ -93,19 +99,23 @@ for (i = 0; i < tr.length; i++) {
     }
   }
 }
-if (x==3){
-  searchByType(4);
-  searchByType(5);
-  }
-  else if(x==4){
-    searchByType(3);
-    searchByType(5);
-  }
-  else if(x==5){
-    searchByType(3);
-    searchByType(5);
+}
+function searchByDifficulty(x){
+  input=x;
+table = document.getElementById("questions");
+tr = table.getElementsByTagName("tr");
+for (i = 0; i < tr.length; i++) {
+  td = tr[i].getElementsByTagName("td")[7];
+  if (td) {
+    if (td.innerHTML.indexOf(input)>-1) {
+      tr[i].style.display = "";
+    } else {
+      tr[i].style.display = "none";
+    }
   }
 }
+}
+
 
 
 function getPoints(id){
@@ -132,7 +142,7 @@ for (var i=0; i<checkBoxes.length; i++){
     console.log(tr);
     var td = tr[i+1].getElementsByTagName("td")[6].innerHTML;
     console.log(td);
-    if (getPoints(i+168)<1){
+    if (getPoints(i+196)<1){
       document.getElementById('errors').innerHTML="Please add one or more points!";
       return 0;
     }

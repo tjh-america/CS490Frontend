@@ -1,3 +1,4 @@
+var testData=[];
 function makeRequest(url) {
   httpRequest = new XMLHttpRequest();
 
@@ -9,86 +10,74 @@ function makeRequest(url) {
     httpRequest.open('POST', url);
     httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     httpRequest.send();
+
 }
 function createTestBank() {
+  var response;
 if (httpRequest.readyState === XMLHttpRequest.DONE) {
   if (httpRequest.status === 200) {
-    var response = JSON.parse(httpRequest.responseText);
-   var txt = "<table border='1'><tr><th>Question Number</th><th>Question</th></tr>"
+    response = JSON.parse(httpRequest.responseText);
+   var txt = "<table border='1'>"
    var pointsPossible=0;
    var pointsAchieved=0;
    for (x in response) {
-     var questionID=response[x].examQuestionID;
-     var studentAnswer=response[x].questionResponse;
-     studentAnswer=studentAnswer.replace(/(\n)+/g, '<br />');
-      //studentAnswer=studentAnswer.replace(/("\n ")+/g,'    <br>');
      var studentScore=response[x].pointsAwarded;
      var questionPoints=response[x].points;
+     var pointsLost = questionPoints - studentScore;
+     var deductionsAccountedFor = 0;
+     var deductions=response[x].deductions;
+     var testCases=response[x].testCases;
+     for (y in deductions) {
+       var graderComments="";
+       if (deductions[y]=="no") {
+         graderComments="All Test Cases Correct. No deductions!";
+       }
+      else if (deductions[y]=="for"){
+        var deduction = Math.floor(studentScore/.80 -  studentScore);
+        deductionsAccountedFor += deduction;
+        graderComments=graderComments+"<br>Deducted points for not using for loop. Points lost: " +deduction+"<br>";
+      }
+      else if (deductions[y]=="while"){
+        var deduction = Math.floor(studentScore/.80 -  studentScore);
+        deductionsAccountedFor += deduction;
+        graderComments=graderComments+"<br>Deducted points for not using while loop."+deduction+"<br>";
+      }
+      else if (deductions[y]=="if"){
+        var deduction = Math.floor(studentScore/.80 -  studentScore);
+        deductionsAccountedFor += deduction;
+        graderComments=graderComments+"<br>Deducted points for not using if statement."+deduction+"<br>";
+      }
+      else {
+        var testCaseDeduction = pointsLost - deductionsAccountedFor;
+        graderComments=graderComments+"<br>Deducted points for failing test case. Number of test cases failed: "+deductions[y]+"<br>Points Lost for failing Test Cases: "+testCaseDeduction;
+      }
+     }
+     var testCaseComments="";
+     for (z in testCases){
+       var testCase=testCases[z].testCase;
+       var expectedResult=testCases[z].expectedResult;
+       var actualResult=testCases[z].actualResult;
+       testCaseComments=testCaseComments+"Function Call: "+testCase+"<br>Expected Result: "+expectedResult+"<br>Your Result: "+actualResult+"<br>";
+     }
+
+     var questionID=response[x].examQuestionID;
+     var studentAnswer=response[x].questionresponse;
+     studentAnswer=studentAnswer.replace(/(\n)+/g, '<br />');
      var questionText=response[x].questionText;
      var comments=response[x].comments;
-     var td1="<tr><td>"+questionID+"</td>";
-     var td2="<td>"+questionText+"</td></tr>"
+     var td1="<tr><td><b>Question #"+questionID+"</b></td>";
+     var td2="<td><b>Question: </b>"+questionText+"</td></tr>"
      var studentResponse="<tr><td colspan='3'>Your Response:<br>"+studentAnswer+"</td></tr>";
-     var professorComments="<tr><td colspan='2'>Professor Comments:<br>"+comments+"</td></tr>";
-     var scoreRow="<tr><td colspan='2'>Your Score on Question "+questionID+": "+studentScore+" out of "+questionPoints+"</td></tr>"
-     txt +=td1+td2+studentResponse+professorComments+scoreRow;
+     var scoreRow="<tr><td colspan='2'>Your Score on Question "+questionID+": "+studentScore+" out of "+questionPoints+"</td></tr>";
+     var commentText="<tr><td>Professorq for Question "+questionID+" below: </td><td>Auto Grader Comments:</td></tr>";
+     var commentRow="<tr><td colspan='1'>"+comments+"</td>";
+     var graderCommentRow="<td>"+testCaseComments+graderComments+"</td></tr>"
+     txt +=td1+td2+studentResponse+scoreRow+commentText+commentRow+graderCommentRow;
      pointsAchieved+=parseInt(studentScore);
      pointsPossible+=parseInt(questionPoints);
-     //checkbox.name = "selectedQuestions";
-     //checkbox.value = "unchecked";
-     //checkbox.id = x;
-       //txt += "<tr><td>"+checkbox.value+"</td><td>" + response[x].questionID + "</td><td>"+response[x].questionText+"</td></tr>";
+
    }
    txt += "</table><br>Total Score: "+pointsAchieved+" out of "+pointsPossible;
    document.getElementById("test").innerHTML = txt;
-    //document.getElementById("json").innerHTML=response[0].questionText;
-  } else {
-    alert('There was a problem with the request.');
-  }
-}
-}
-function makeRequestData(url) {
-httpRequestTest = new XMLHttpRequest();
-var data = JSON.parse(httpRequestTest.responseText);
-console.log("line 49");
-if (!httpRequestTest) {
-  alert('Giving up :( Cannot create an XMLHTTP instance');
-  return false;
-}
-httpRequestTest.onreadystatechange = submitTest;
-  httpRequestTest.open('POST', url);
-  httpRequestTest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  httpRequestTest.send(data);
-}
-//function getResponses(){
-//var response = JSON.parse(httpRequest.responseText);
-
-//var testData=[];
-//var questionIDs=[];
-//var questionID;
-//testData.questionIDs=questionIDs;
-//for (var i=0; i<response.length; i++){
-  //  testData.push({questionID:
-    //  response[i].questionID,
-      //questionResponse: document.getElementById(i).value});
-
-  //}
-  //jsonData=JSON.stringify(testData);
-  //console.log(jsonData);
-  //return(jsonData);
-//}
-
-function submitTest() {
-if (httpRequestTest.readyState === XMLHttpRequest.DONE) {
-if (httpRequestTest.status === 200) {
-  var submittedTest = httpRequestTest.responseText;
-  var div=document.createElement("div");
-  var text = document.createTextNode(submittedTest);
-  div.appendChild(text);
-  document.body.appendChild(div);
-  //document.getElementById("testSuccess").innerHTML=createdTest;
-} else {
-  alert('There was a problem with the request.');
-}
-}
+}}
 }

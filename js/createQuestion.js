@@ -22,6 +22,7 @@ function getQuestion(){
   var ifStatement=document.getElementById("if").checked;
   var whileLoop=document.getElementById("while").checked;
   var numParams=document.getElementById('params').value;
+  var difficulty = document.querySelector('input[name = "difficulty"]:checked').value;
   if (forLoop==true){
     forLoop=1;
   }
@@ -37,11 +38,13 @@ function getQuestion(){
   questionData.push({question:
     questionText,
     functionName: functionName,
+    difficulty: difficulty,
     forLoop: forLoop,
     whileLoop: whileLoop,
     ifStatement: ifStatement,
     numParams: numParams,
-    testCases: testCases });
+    testCases: testCases
+     });
   var jsonData=JSON.stringify(questionData);
   console.log(jsonData);
   return jsonData;

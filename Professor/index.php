@@ -16,7 +16,7 @@ include('session.php');
   <li><a href="logout.php">Logout</a></li>
 </ul>
 <h1>Welcome Professor!</h1>
-<br><hr><br>
+<hr><br>
 From this site, you can create a question, create a test, and submit tets to be automatically graded. If you don't like the scores the autograder has assigned, you will still be able to change the grades and add comments.
 <br><br>
 <button id="releaseScores" onclick="releaseScores('releaseScores.php')">Release Scores</button>
